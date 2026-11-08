@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>Mood Detector | Emotion Analysis</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <main class="page-wrapper">
+
+        <div class="container">
+
+            <div class="top-label">
+                <span class="status-dot"></span>
+                AI-POWERED MOOD ANALYSIS
+            </div>
+
+            <h1>Mood Detector</h1>
+
+            <p class="subtitle">
+                Understand the emotions behind your words.
+                Express yourself, and let AI explore your mood.
+            </p>
+
+            <div class="input-section">
+
+                <label for="user-input">YOUR THOUGHTS</label>
+
+                <textarea
+                    id="user-input"
+                    maxlength="500"
+                    placeholder="What's on your mind today? Start typing here..."
+                ></textarea>
+
+                <div class="input-footer">
+                    <span>✧ Your thoughts matter</span>
+                    <span id="char-count">0 / 500</span>
+                </div>
+
+            </div>
+
+            <button id="detect-btn" type="button" disabled>
+                <span class="button-label">Detect My Mood</span>
+                <span class="button-arrow" aria-hidden="true">→</span>
+            </button>
+
+            <div id="result" class="result" aria-live="polite" hidden>
+                <p id="result-label" class="result-label">Detected mood</p>
+                <p id="result-value" class="result-value"></p>
+            </div>
+
+            <div class="bottom-note">
+                <span class="note-icon">✧</span>
+                A little insight into how you're feeling.
+            </div>
+
+        </div>
+
+        <footer>
+            Designed to understand emotions, one sentence at a time.
+        </footer>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

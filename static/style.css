@@ -1,0 +1,551 @@
+/* =========================================
+   1. COLOR PALETTE
+========================================= */
+
+:root {
+    --aqua: #a8edea;
+    --pink: #fed6e3;
+
+    --green: #2ecc71;
+    --green-dark: #1e8449;
+    --green-darker: #186a3b;
+    --green-pale: #eaf8f1;
+
+    --navy: #2c3e50;
+    --text: #536575;
+    --muted: #62737f;
+
+    --white: #ffffff;
+    --surface: #f9fcfb;
+    --border: #e5eeec;
+
+    --shadow: 0 16px 45px rgba(44, 62, 80, 0.09);
+
+    /* soft emotion colors, used only on the result card */
+    --anger: #e07a5f;
+    --fear: #9a86c4;
+    --joy: #e5b53b;
+    --love: #e58bab;
+    --sad: #6f9bd1;
+    --surprise: #3fb8a8;
+}
+
+
+/* =========================================
+   2. GENERAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    line-height: 1.5;
+
+    color: var(--navy);
+
+    background:
+        linear-gradient(
+            125deg,
+            #d8f5f1 0%,
+            #eaf7f5 35%,
+            #f9edf1 75%,
+            #fedfe8 100%
+        );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding:
+        max(clamp(18px, 5vw, 45px), env(safe-area-inset-top))
+        max(clamp(14px, 4vw, 22px), env(safe-area-inset-right))
+        max(clamp(18px, 5vw, 45px), env(safe-area-inset-bottom))
+        max(clamp(14px, 4vw, 22px), env(safe-area-inset-left));
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* =========================================
+   3. PAGE LAYOUT
+========================================= */
+
+.page-wrapper {
+    width: 100%;
+    max-width: 650px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 17px;
+}
+
+
+/* =========================================
+   4. MAIN PANEL
+========================================= */
+
+.container {
+    width: 100%;
+
+    padding: clamp(28px, 6vw, 48px) clamp(22px, 6.5vw, 52px) clamp(24px, 4.5vw, 35px);
+
+    background: var(--white);
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+
+    border-radius: 19px;
+
+    box-shadow: var(--shadow);
+
+    text-align: left;
+
+    animation: appear 0.55s ease both;
+}
+
+
+/* =========================================
+   5. SMALL HEADER LABEL
+========================================= */
+
+.top-label {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 9px;
+
+    color: var(--green-dark);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.6px;
+}
+
+.status-dot {
+    flex-shrink: 0;
+
+    width: 7px;
+    height: 7px;
+
+    background: var(--green);
+
+    border-radius: 50%;
+}
+
+
+/* =========================================
+   6. HEADING
+========================================= */
+
+h1 {
+    margin: clamp(22px, 4vw, 29px) 0 0;
+
+    color: var(--navy);
+
+    font-size: clamp(2rem, 1.5rem + 2.4vw, 2.7rem);
+
+    font-weight: 700;
+
+    letter-spacing: -0.045em;
+
+    line-height: 1.15;
+}
+
+.subtitle {
+    max-width: 440px;
+
+    margin: 13px 0 clamp(26px, 5vw, 37px);
+
+    color: var(--text);
+
+    font-size: clamp(0.875rem, 0.82rem + 0.2vw, 0.9375rem);
+
+    line-height: 1.8;
+
+    font-weight: 400;
+}
+
+
+/* =========================================
+   7. INPUT SECTION
+========================================= */
+
+.input-section {
+    text-align: left;
+}
+
+.input-section label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--navy);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+}
+
+textarea {
+    display: block;
+
+    width: 100%;
+    min-height: clamp(130px, 22vh, 170px);
+
+    padding: 18px 20px;
+
+    resize: vertical;
+
+    font-family: inherit;
+
+    font-size: 1rem; /* 16px, so iPhones do not zoom in */
+
+    line-height: 1.75;
+
+    color: var(--navy);
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    outline: none;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+textarea::placeholder {
+    color: #8c9ba5;
+}
+
+textarea:hover {
+    border-color: #c6e5dd;
+}
+
+textarea:focus {
+    background: var(--white);
+
+    border-color: #8dd8c7;
+
+    box-shadow: 0 0 0 3px rgba(168, 237, 234, 0.3);
+}
+
+
+/* =========================================
+   8. INPUT FOOTER
+========================================= */
+
+.input-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 4px 12px;
+
+    margin-top: 12px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+#char-count {
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================
+   9. BUTTON
+========================================= */
+
+button {
+    width: 100%;
+    min-height: 48px;
+
+    margin-top: 25px;
+
+    padding: 14px 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 22px;
+
+    background: var(--green-dark);
+
+    color: var(--white);
+
+    border: 1px solid var(--green-dark);
+
+    border-radius: 9px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+@media (min-width: 601px) {
+    button {
+        width: auto;
+        min-width: 200px;
+    }
+}
+
+button:not(:disabled):hover {
+    background: var(--green-darker);
+    border-color: var(--green-darker);
+
+    transform: translateY(-2px);
+}
+
+button:not(:disabled):active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button:focus-visible {
+    outline: 3px solid #8dd8c7;
+    outline-offset: 3px;
+}
+
+.button-arrow {
+    font-size: 18px;
+
+    transition: transform 0.2s ease;
+}
+
+button:not(:disabled):hover .button-arrow {
+    transform: translateX(3px);
+}
+
+
+/* =========================================
+   10. RESULT
+========================================= */
+
+.result {
+    --c: var(--green);
+
+    margin-top: 25px;
+
+    padding: 18px 22px;
+
+    background: #f2faf7;
+    background: color-mix(in srgb, var(--c) 9%, white);
+
+    border: 1px solid #dcefe7;
+    border: 1px solid color-mix(in srgb, var(--c) 28%, white);
+    border-left: 3px solid var(--c);
+
+    border-radius: 7px;
+
+    animation: resultAppear 0.3s ease both;
+}
+
+.result[hidden] {
+    display: none;
+}
+
+.result[data-emotion="anger"]    { --c: var(--anger); }
+.result[data-emotion="fear"]     { --c: var(--fear); }
+.result[data-emotion="joy"]      { --c: var(--joy); }
+.result[data-emotion="love"]     { --c: var(--love); }
+.result[data-emotion="sad"]      { --c: var(--sad); }
+.result[data-emotion="surprise"] { --c: var(--surprise); }
+
+.result-label {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.result-value {
+    margin: 4px 0 0;
+
+    color: var(--navy);
+
+    font-size: clamp(1.4rem, 1.1rem + 1.4vw, 1.75rem);
+    font-weight: 700;
+
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+
+    overflow-wrap: anywhere;
+}
+
+.result.is-loading .result-value {
+    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.result.is-error {
+    --c: var(--anger);
+}
+
+.result.is-error .result-value {
+    font-size: 0.9375rem;
+    font-weight: 500;
+}
+
+
+/* =========================================
+   11. BOTTOM NOTE
+========================================= */
+
+.bottom-note {
+    margin-top: clamp(26px, 5vw, 34px);
+
+    padding-top: 19px;
+
+    border-top: 1px solid #edf1f0;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.note-icon {
+    color: var(--green-dark);
+    font-size: 15px;
+}
+
+
+/* =========================================
+   12. FOOTER
+========================================= */
+
+footer {
+    color: rgba(44, 62, 80, 0.7);
+
+    font-size: 12px;
+
+    text-align: center;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   13. ANIMATIONS
+========================================= */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes resultAppear {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   14. SMALL SCREENS
+========================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        border-radius: 15px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .top-label {
+        font-size: 10px;
+        letter-spacing: 1.2px;
+    }
+
+    .result {
+        padding: 16px 18px;
+    }
+}
+
+/* short landscape phones */
+@media (max-height: 520px) and (orientation: landscape) {
+
+    body {
+        align-items: flex-start;
+    }
+
+    textarea {
+        min-height: 100px;
+    }
+}
+
+
+/* =========================================
+   15. ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Large generated files (recreate them by running main.py)
+*.npy
+mood_model_semantic.pkl
+mood_model_svm.pkl
+
+# Dataset (download it separately, see README)
+combined_emotion.csv
+
+# Secrets and system files
+.env
+.DS_Store
+Thumbs.db

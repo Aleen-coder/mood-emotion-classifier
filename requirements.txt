@@ -1,0 +1,8 @@
+flask
+pandas
+numpy
+nltk
+scikit-learn
+sentence-transformers
+joblib
+matplotlib
